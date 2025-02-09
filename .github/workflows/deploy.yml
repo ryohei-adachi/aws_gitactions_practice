@@ -20,7 +20,7 @@ jobs:
         
       - name: EC2にHTML/CSSをデプロイ
         run:
-          rsync -avz -e "ssh -oStrictHostKeyChecking=no -i private_key.pem" ./web/ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/html/
+          rsync -rlptDOvz -e "ssh -oStrictHostKeyChecking=no -i private_key.pem" ./web/ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/html/
         
       - name: EC2でApacheを再起動（オプション）
         run: |
